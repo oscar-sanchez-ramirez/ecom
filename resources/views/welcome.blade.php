@@ -136,7 +136,7 @@
 										</div>
 										<div class="cart-btns">
 											<a href="#">Ver Cart</a>
-											<a href="#">Comprar  <i class="fa fa-arrow-circle-right"></i></a>
+											<a href="/paypal/pay">Comprar <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>

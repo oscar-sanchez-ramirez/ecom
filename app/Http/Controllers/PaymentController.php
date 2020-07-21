@@ -12,10 +12,8 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
-
-
-
 use Paypal\PayPal;
+
 
 
 
@@ -37,16 +35,16 @@ class PaymentController extends Controller
         $this->apiContext->setConfig($payPalConfig['settings']);
     }
 
-    // ...
+    
 
     public function payWithPayPal()
     {
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-
+        $valor = 234.45;
         $amount = new Amount();
-        $amount->setTotal('3.99');
-        $amount->setCurrency('USD');
+        $amount->setTotal($valor);
+        $amount->setCurrency('MXN');
 
         $transaction = new Transaction();
         $transaction->setAmount($amount);
@@ -72,6 +70,10 @@ class PaymentController extends Controller
         }
     }
 
+
+
+
+
     public function payPalStatus(Request $request)
     {
         $paymentId = $request->input('paymentId');
@@ -90,7 +92,7 @@ class PaymentController extends Controller
 
         /** Execute the payment **/
         $result = $payment->execute($execution, $this->apiContext);
-        
+
 
         if ($result->getState() === 'approved') {
             $status = 'Gracias! El pago a través de PayPal se ha ralizado correctamente.';
@@ -102,11 +104,13 @@ class PaymentController extends Controller
     }
 
 
-    public function results(){
+    public function results()
+    {
         return view('results');
     }
 
-    public function failed(){
+    public function failed()
+    {
         return "Fallo";
     }
 }

@@ -21,5 +21,7 @@ Route::get('/paypal/pay', 'PaymentController@payWithPayPal');
 Route::get('/paypal/status', 'PaymentController@payPalStatus');
 Route::get('/paypal/results', 'PaymentController@results')->name('paypal.results');
 Route::get('/paypal/failed', 'PaymentController@failed')->name('paypal.failed');
+Route::get('/section/lap', 'SectionController@lap')->name('section.lap');
 
-
+Route::get('/stripe/pay', 'StripeController@pay')->name('stripe.pay');
+Route::post('/stripe/create', 'StripeController@create')->name('stripe.create');
